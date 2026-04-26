@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stefan Hartmann">
+
+<title>Eine kleine Korpusstudie zu Zusammen- und Getrenntschreibung</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-fe6593aca1dacbc749dc3d2ba78c8639.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="index_files/libs/quarto-contrib/quizdown-0.6.0/quizdown.js"></script>
+<script src="index_files/libs/quarto-contrib/quizdown-0.6.0/quizdownKatex.js"></script>
+<script src="index_files/libs/quarto-contrib/quizdown-0.6.0/quizdownHighlight.js"></script>
+<script src="index_files/libs/quarto-contrib/quizdown-0.6.0/quizdown-init.js"></script>
+
+
+<link rel="stylesheet" href="webex.css">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#einleitung" id="toc-einleitung" class="nav-link active" data-scroll-target="#einleitung">Einleitung</a></li>
+  <li><a href="#graphematische-variation-aus-korpuslinguistischer-perspektive" id="toc-graphematische-variation-aus-korpuslinguistischer-perspektive" class="nav-link" data-scroll-target="#graphematische-variation-aus-korpuslinguistischer-perspektive">Graphematische Variation aus korpuslinguistischer Perspektive</a></li>
+  <li><a href="#fallbeispiel-1-rechtschreiblich-schwierige-wörter" id="toc-fallbeispiel-1-rechtschreiblich-schwierige-wörter" class="nav-link" data-scroll-target="#fallbeispiel-1-rechtschreiblich-schwierige-wörter">Fallbeispiel 1: Rechtschreiblich schwierige Wörter</a>
+  <ul class="collapse">
+  <li><a href="#unsere-datenbasis-dwds" id="toc-unsere-datenbasis-dwds" class="nav-link" data-scroll-target="#unsere-datenbasis-dwds">Unsere Datenbasis: DWDS</a></li>
+  <li><a href="#fallbeispiel-2-suche-nach-zuhause-zu-hause-im-dwds" id="toc-fallbeispiel-2-suche-nach-zuhause-zu-hause-im-dwds" class="nav-link" data-scroll-target="#fallbeispiel-2-suche-nach-zuhause-zu-hause-im-dwds">Fallbeispiel 2: Suche nach <em>zuhause / zu Hause</em> im DWDS</a></li>
+  <li><a href="#fragen-zum-video" id="toc-fragen-zum-video" class="nav-link" data-scroll-target="#fragen-zum-video">Fragen zum Video</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Eine kleine Korpusstudie zu Zusammen- und Getrenntschreibung</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stefan Hartmann </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="einleitung" class="level2">
+<h2 class="anchored" data-anchor-id="einleitung">Einleitung</h2>
+<p>In diesem Tutorial wollen wir einfache korpuslinguistische Methoden auf schriftlinguistische Fragestellungen anwenden. Dafür wollen wir die Korpora des Digitalen Wörterbuchs der Deutschen Sprache (DWDS) nutzen. Nach Lektüre des Tutorials sollten Sie</p>
+<ul>
+<li><p>korpuslinguistische Grundbegriffe benennen und erläutern können, insbesondere die der Repräsentativität und Ausgewogenheit;</p></li>
+<li><p>in der Lage sein, selbstständig einfache Suchanfragen über die Webschnittstelle des DWDS zu formulieren;</p></li>
+<li><p>Herausforderungen bei der korpuslinguistischen Operationalisierung schriftlinguistischer Fragestellungen benennen und darauf aufbauend unterschiedliche methdische Ansätze kritisch einordnen können.</p></li>
+</ul>
+<p>Bevor wir in Fallbeispiele einsteigen,</p>
+</section>
+<section id="graphematische-variation-aus-korpuslinguistischer-perspektive" class="level2">
+<h2 class="anchored" data-anchor-id="graphematische-variation-aus-korpuslinguistischer-perspektive">Graphematische Variation aus korpuslinguistischer Perspektive</h2>
+<p>Im Deutschen ist Rechtschreibung bekanntlich in hohem Maße <strong>normiert</strong> und <strong>kodifiziert</strong>. Das heißt, es gibt Rechtschreibnormen, die in Regelwerken niedergelegt sind - beispielsweise im Amtlichen Regelwerk der deutschen Rechtschreibung, das u.a. für Schulen und Behörden verbindlich ist. Weitere normative Vorgaben oder zumindest Empfehlungen finden sich in Werken, die de facto normsetzend geworden sind, auch wenn sie im Gegensatz zum Amtlichen Regelwerk keinen offiziell verbindlichen Status haben, etwa dem Rechtschreibduden.</p>
+<p>Dadurch gibt es in der Standard-Schriftsprache des Deutschen relativ wenig Variationsspielraum, auch wenn es Bereiche gibt, in denen die Norm mehrere Varianten zulässt, etwa einige Bereiche der Getrennt- und Zusammenschreibung. Im tatsächlichen Schriftsprachgebrauch gibt es aber natürlich ein hohes Maß an Variation, gerade da, wo die Norm nicht gilt. <strong>Webdaten</strong> bieten vor diesem Hintergrund eine willkommene Möglichkeit, graphematische Variation zu untersuchen: Auch wenn sich im Internet viele Seiten finden, die von mehr oder weniger professionell Schreibenden erstellt werden, die sich in der Regel an die normativen Vorgaben halten, gibt es doch auch viele Seiten, die eher spontansprachlichen Charakter haben, etwa Foren, in denen manche Schreibende auf orthographische Korrektheit achten, andere eher nicht.</p>
+</section>
+<section id="fallbeispiel-1-rechtschreiblich-schwierige-wörter" class="level2">
+<h2 class="anchored" data-anchor-id="fallbeispiel-1-rechtschreiblich-schwierige-wörter">Fallbeispiel 1: Rechtschreiblich schwierige Wörter</h2>
+<p>Wir können einen Eindruck davon gewinnen, indem wir nach sog. rechtschreiblich schwierigen Wörtern suchen. Nehmen wir die häufig falsch geschriebenen Wörter &lt;Standard&gt; und &lt;Apartheid&gt; (bei Ersterem könnte die Ähnlichkeit zur &lt;Standarte&gt; die häufige Fehlschreibung mit &lt;t&gt; teilweise erklären, Letzteres kommt aus dem Afrikaans und wird daher anders als native <em>-heit</em>-suffigierte Wörter mit &lt;d&gt; geschrieben).</p>
+<section id="unsere-datenbasis-dwds" class="level3">
+<h3 class="anchored" data-anchor-id="unsere-datenbasis-dwds">Unsere Datenbasis: DWDS</h3>
+<div id="iframe_wrapper" style="position:relative;overflow:hidden;width:100%;height:100%;padding-top:56.25%;">
+<iframe src="https://media.hhu.de/media/embed?key=f3a8d35152b1e993930f2d6e91b4074f&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src="" class="iframeLoaded" width="100%" height="100%" title="DWDS Webkorpora" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
+</iframe>
+</div>
+</section>
+<section id="fallbeispiel-2-suche-nach-zuhause-zu-hause-im-dwds" class="level3">
+<h3 class="anchored" data-anchor-id="fallbeispiel-2-suche-nach-zuhause-zu-hause-im-dwds">Fallbeispiel 2: Suche nach <em>zuhause / zu Hause</em> im DWDS</h3>
+<p>Im Folgenden wollen wir einen Zweifelsfall der Getrennt- und Zusammenschreibung untersuchen, nämlich <em>zuhause</em> vs.&nbsp;<em>zu Hause</em>. Auch hierfür nutzen wir wieder das DWDS.</p>
+<div style="position:relative;overflow:hidden;width:100%;height:100%;padding-top:56.25%;">
+<iframe src="https://media.hhu.de/media/embed?key=44712d4902ee51f00075240cb2da685a&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src="" class="iframeLoaded" width="100%" height="100%" title="DWDS: Arbeit mit dem CSV-Export für zuhause" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
+</iframe>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Transkript ausklappen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>[erstellt mit <a href="https://openai.com/index/whisper/">Whisper</a>, manuell korrigiert]</p>
+<p>Wenn wir auf die Seite des digitalen Wörterbuch der deutschen Sprache, kurz DWDS, gehen, dann finden wir dort viele verschiedene TextKorpora. Einige sind frei zugänglich, andere nur nach Anmeldung. Die Korpora, die uns jetzt interessieren, sind Web-Korpora. Davon gibt es hier mehrere - die können wir durch Klick auch ein bisschen genauer uns anschauen und nähere Informationen darüber bekommen. Und wir sehen, dass wir zum einen ein Web-XL-Korpus haben; das ist hier in die Kategorie Metakorpora eingeordnet. Metakorpora, das sind solche Korpora, die verschiedene Korpora in sich versammeln. Das heißt, es handelt sich, wie es hier auch formuliert ist, um aggregierte Daten, die man quasi gebündelt durchsuchen kann, oder man kann eben mit den einzelnen Korpora arbeiten. Je nachdem, welcher Forschungsfrage man nachgeht und welche Zusammensetzung der Daten man braucht, ist entweder die Arbeit mit einzelnen, gegebenenfalls auf einzelne Parameter hin ausgewogenen kleineren Korpora sinnvoll – oder eben die Nutzung von solchen aggregierten Daten, wie sie Metakorpora zu Verfügung stellen. Web-XL wäre also ein Web-Korpus, das wir auf DWDS zur Verfügung haben. Und wir sehen hier, dass es eine sehr heterogene Zusammenstellung an Daten ist, zu denen auch ein eigenes Web-Korpus nochmal gehört, dass wiederum ein Einzel-Korpus ist, das quasi ebenfalls eine ganze Reihe an verschiedenen Daten umfasst.</p>
+<p>Das sehen wir auch hier, Hundertausende unterschiedliche Webseiten, professionell und privat, also auch da eine sehr heterogene Datenbasis, aber unter gewissen Umständen ist das genau das, was wir eben für unsere Fragestellung brauchen. Darüber hinaus gibt es auch noch einen Web-Monitor, den sehen wir hier. Und dabei handelt es sich um ein sogenanntes Monitor-Korpus. Monitor-Korpora sind solche Korpora, die im Gegensatz zu anderen Korpora eben nicht statisch sind. Bei vielen Korpora ist es ja so, dass man auch damit man Suchanfragen replizierbar machen will, das heißt, damit andere Forschende dann hingehen können und das ganze quasi überprüfen, indem sie die gleiche Suchanfrage nochmal machen. Aus diesem Grund hält man Korpora häufig statisch. Hier haben wir nun ein Korpus, das dynamisch ist, das sich also im Laufe der Zeit weiter entwickelt, wo regelmäßig Daten hinzugefügt werden. Es ist also ein Korpus, das regelmäßig wächst und das ist für uns auch nicht ganz uninteressant. Darin könnten wir schauen, wie sich etwas über die Zeit hinweg entwickelt. Zunächst aber wollen wir uns mit dem in Anführungszeichen normalen Web-Korpus begnügen. Wir sehen nun, dass dieses Web-Korpus nur nach Anmeldung zugänglich ist, deswegen müssen wir uns hier anmelden. Die Registrierung ist kostenlos, das heißt man kann sich hier einfach anmelden, und dann hat man Zugriff auf all diese Ressourcen.</p>
+</div>
+</div>
+</div>
+<p>bla bla</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Transkript ausklappen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Wenn wir auf der Startseite des DWDS sind, sehen wir sehr prominent platziert eine Suchleiste. Wenn wir hier ein einzelnes Wort eingeben, z.B. <em>zuhause</em> (in einem Wort geschrieben), dann sucht DWDS zunächst in seinen lexikalischen Ressourcen – denn es ist ja zunächst einmal ein Wörterbuch. Was uns interessiert, sind aber die Korpora, die übers DWDS verfügbar sind. Wenn wir ein wenig nach unten scrollen, sehen wir die Sektion “Belege in Korpora”. Hier haben wir die Möglichkeit, uns Belege in unterschiedlichen Korpora anzusehen.</p>
+<p>Die Wahl des Korpus richtet sich nach unserer Fragestellung. Wenn wir standardsprachlichen Gebrauch untersuchen wollen, bietet es sich an, eines der Kernkorpora des DWDS zu verwenden. Die Kernkorpora sind sogenannte Referenzkorpora. Referenzkorpora zielen darauf ab, eine bestimmte Sprache bzw. sprachliche Varietät zu einem bestimmten Zeitpunkt oder in einer bestimmten Zeitspanne möglichst repräsentativ abzubilden. Im Fall der beiden DWDS-Kernkorpora fürs 20. und 21. Jahrhundert bemüht man sich daher um Ausgewogenheit zwischen vier Textsorten, wie wir auch den Detailinformationen zum Korpus - hier das Kernkorpus fürs 20. Jahrundert - entnehmen können: Belletristik, Zeitung, Wissenschaft und Gebrauchsliteratur. Das Korpus ist somit um Ausgewogenheit zwischen verschiedenen Textsorten bemüht. Weil es die gegenwartsdeutsche Standardsprache abbilden möchte, konzentriert es sich auf vier Textsorten, bei denen zu erwarten ist, dass sie relativ standardnah sind.</p>
+<p>Wenn wir nun in die Belege im Kernkorpus des 20. Jh. schauen, sehen wir, dass es 228 Treffer gibt – genau genommen sogar 294, von denen allerdings einige aus urheberrechtlichen Gründen nicht anzeigbar sind. Das ist immer so, wenn wir im DWDS-Kernkorpus suchen.</p>
+<p>Gehen wir nochmal zurück zum Wörterbucheintrag von zuhause und suchen von da nach dem Wort. Wenn wir jetzt in die Suchleiste schauen, sehen wir aber noch etwas Erstaunliches: Hier stehen plötzlich zwei Suchanfragen, die durch einen Oder-Operator voneinander getrennt sind - im DWDS besteht der Oder-Operator aus zwei vertikalen Strichen, in anderen Suchabfragesystemen haben wir nur einen vertikalen Strich als Oder-Operator. Weil wir die Suche vom Wörterbucheintrag aus gestartet haben, bezieht DWDS hier automatisch beide Schreibvarianten in die Suche mit ein. Dafür müssen wir wissen: Wenn wir in den DWDS-Korpora einfach nur ein Wort eingeben, ohne weitere Kennzeichnung, dann startet das DWDS eine Lemmasuche – das heißt, es sucht nach allen Wortformen des betroffenen Wortes. Wenn ich also ein Wort wie das Verb <em>sein</em> habe - hier gebe ich an, dass es ein Verb sein muss, weil es ja auch das Possessivpronomen <em>sein</em> gibt – dann findet DWDS auch <em>bin, ist, seid</em> usw., also die Flexionsformen des Lemmas.</p>
+<p>Jetzt aber zurück zu zuhause. Wir sehen, dass die zweite Suchanfrage ein @-Zeichen beinhaltet. Das bedeutet in der DWDS-Syntax, dass genau diese Wortform gesucht werden soll, nicht auch irgendwelche Flexionsformen.</p>
+<p>Zusammengenommen findet die Suchanfrage also genau die beiden Varianten, die wir wollen: einmal die zusammengeschriebene, einmal die getrennt geschriebene. Mit “Treffer exportieren” können wir uns die Daten auch als Spreadsheet herunterladen und dann damit weiterarbeiten.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="fragen-zum-video" class="level3">
+<h3 class="anchored" data-anchor-id="fragen-zum-video">Fragen zum Video</h3>
+<div class="webex-question">
+<div class="webex-check webex-box">
+<p>Welche Aussagen zu Referenzkorpora sind richtig?</p>
+<div id="webex-9a178c3227471cb8b3b1e4a1c868b718" class="webex-checkboxgroup" data-answer="YlEdBhRSHwJv">
+<label><input type="checkbox" autocomplete="off" name="9a178c3227471cb8b3b1e4a1c868b718"><span>Referenzkorpora sind Korpora, die möglichst gutes und richtiges Deutsch dokumentieren.</span></label><label><input type="checkbox" autocomplete="off" name="9a178c3227471cb8b3b1e4a1c868b718"><span>Referenzkorpora sind Korpora, die den Stand einer Sprache zu einem bestimmten Zeitpunkt oder in einer bestimmten Zeitspanne möglichst gut und umfassend abbilden wollen.</span></label><label><input type="checkbox" autocomplete="off" name="9a178c3227471cb8b3b1e4a1c868b718"><span>Referenzkorpora sind um Ausgewogenheit hinsichtlich verschiedener Parameter wie z.B. Textsorte (Genre) bemüht.</span></label><label><input type="checkbox" autocomplete="off" name="9a178c3227471cb8b3b1e4a1c868b718"><span>Referenzkorpora haben das Ziel, den Sprachgebrauch einer spezifischen sozialen Gruppe möglichst genau zu beschreiben.</span></label>
+</div>
+</div>
+</div>
+<div style="position:relative;overflow:hidden;width:100%;height:100%;padding-top:56.25%;">
+<iframe src="https://media.hhu.de/media/embed?key=44712d4902ee51f00075240cb2da685a&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src="" class="iframeLoaded" width="100%" height="100%" title="DWDS: Arbeit mit dem CSV-Export für zuhause" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
+</iframe>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Transkript ausklappen
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>[erstellt mit <a href="https://openai.com/index/whisper/">Whisper</a>, manuell korrigiert]</p>
+<p>Okay, ich habe die Datei jetzt hier heruntergeladen, und was wir hier dann haben, ist eine sogenannte Konkordanz. Eine Konkordanz ist eine Liste mit Korpustreffern, die in der Regel im sogenannten Keyword-in-Context-Format erscheinen, wie wir es auch hier schon im DWDS gesehen haben. Das heißt, wir haben das Keyword, nach dem wir gesucht haben, in unserem Fall <em>zu Hause,</em> und wir haben den Kontext dazu. Der Kontext, der wird wichtig, wenn wir weitere Schritte damit unternehmen, wenn wir beispielsweise Annotationen hinzufügen wollen. Wir könnten beispielsweise <em>zu Hause</em> daraufhin annotieren, wie es gebraucht wird, also ob es in Konstruktionen wie <em>zu Hause bleiben, zu Hause sein</em> und so weiter gebraucht wird oder in anderen Kontexten. Das wollen wir an der Stelle noch nicht machen, sondern wir wollen zunächst einmal anschauen, uns anschauen, wie eine solche Datei aussieht.</p>
+<p>Ich habe das jetzt so konfiguriert, dass die csv-Datei mit LibreOffice Calc geöffnet wird, mit Excel würde das aber ganz ähnlich gehen und hier sehen wir das zunächst eine Abfrage kommt, wie die Daten formatiert sind. Das ist ganz hilfreich, weil csv-Dateien manchmal leichte Unterschiede in ihrer Formatierung haben. Hier ist schon alles richtig eingestellt. Es handelt sich um eine komma-separierte Tabelle, deswegen auch csv wegen comma-separated values. Und wir haben Anführungszeichen als sogenannte String Delimiter. Das heißt, wenn wir irgendwo zum Beispiel ein Komma im Text haben, das nicht die Spalten voneinander abgrenzt, dann wird mit den Anführungszeichen die Zusammengehörigkeit der entsprechenden Passagen angezeigt. Damit wird also angezeigt, dass das Komma keine spaltenseparierende Funktion hat, sondern zum Text gehört. Und gerade, wenn wir solche Korpusdaten haben, da kommen ja schon mal Kommas vor im Kontext links oder rechts von unserem Keyword.</p>
+<p>Okay, ich öffne jetzt die Datei, und hier sehen wir, dass wir mehrere Spalten haben. In der ersten Spalte werden die Treffer durchnummeriert, dann haben wir hier das Datum, wobei hier das Ja für uns wahrscheinlich am interessantesten ist. Wir haben das Genre, das wäre dann eine der vier Textsorten, die im DWDS vorhanden sind. Wir haben bibliografische Angaben, und dann haben wir den linken Kontext, unseren Treffer und den rechten Kontext.</p>
+<p>Ich mache hier mal den linken Kontext ein bisschen kleiner, damit wir uns mehr auf die Treffer konzentrieren können, auch den rechten Kontext mache ich ein bisschen kleiner, und in der Regel formatiere ich das Ganze dann auch noch so, dass der linke Kontext rechtsbündig ist, weil man dann schön hier durchlesen kann, und das Ganze speichere ich jetzt auch mal als nicht mehr als csv-Datei, sondern in dem Fall als LibreOffice Spreadsheet-Datei (ODS), damit wir auch weitere Formatierungsoptionen wie Filtern beispielsweise nutzen und die speichern können. Wenn wir mit csv weiterarbeiten würden, dann würden diese Formatierungen beispielsweise dann nicht gespeichert werden, sondern wir hätten einfach nur den Text.</p>
+<p>Jetzt könnten wir weitere Annotationen hinzufügen, und eine Annotation, die uns natürlich besonders interessiert, ist die Variante, also handelt es sich um zu Hause zusammengeschrieben oder getrennt geschrieben. Das können wir zum Glück sehr einfach annotieren, indem wir hier einen Filter setzen und dann die Hits sortieren, denn wir sehen, wenn wir die Getrennschreibung haben, dann ist nur zu in unserer Hit-Spalte, in allen anderen Fällen ist zu Hause in unserer Hit-Spalte. Und wenn wir das Ganze jetzt einfach mal aufsteigend sortieren, dann sehen wir, wir haben jetzt alle <em>zu Hause</em> getrennt geschrieben beisammen und alle zu Hause zusammengeschrieben beisammen. Das heißt, wir können hier einfach eintragen: <em>zu Hause</em> getrennt geschrieben – und können jetzt hier das Ganze bis zum Ende des Blocks, wo wir die getrennt geschriebenen Einheiten haben, runterziehen. Wenn ich die Umschalttaste betätige und dabei auf eine Zelle hier klicke, dann wird quasi der ganze Bereich bis zu dem Punkt, an dem ich klicke, markiert, also Umschalttaste, Linksklick, und wir sehen, hier ist jetzt alles markiert. Ganz oben habe ich bereits <em>zu Hause</em> in zwei Wörtern eingetragen, das heißt, was ich jetzt machen kann, ist, ich kann Steuerung und D drücken, und dann wird das Ganze übertragen auf den gesamten markierten Bereich. Also: Strg + D, und hier haben wir die Annotation in Windeseile auf diesen ganzen Bereich übertragen. Geht in Excel übrigens ganz genau so.</p>
+<p><em>Zuhause</em> in einem Wort ist dann der Rest, und da machen wir das Gleiche nochmal, also Umschalt und Linksklicken, Steuerung und D – und wir haben in wenigen Minuten die gesamte Tabelle mit fast 5.000 Treffern anotiert, natürlich nur auf diesen einen Parameter hin; es gäbe noch viele weitere Parameter, die interessant wären, die wir aber jetzt erst mal außen vor lassen. Das Ganze können wir, wenn wir wollen, jetzt noch ein bisschen weiter analysieren.</p>
+<p>Wir können beispielsweise hier in Data Pivot Table eine sogenannte Pivot Tabelle erstellen und wir sehen, hier wird gleich die ganze Auswahl automatisch ausgewählt, das ist gut, wir wollen zumindest theoretisch in der Lage sein, alles mit einzubeziehen und hier können wir dann solche Tabellen erstellen, die einfachste Tabelle wäre, dass wir erst mal rausfinden wollen, wie viele Belege haben wir eigentlich von jeder der beiden Varianten, dafür ziehe ich die Variante in das Zeilenfeld und auch in das Datenfeld. Wir sehen, dass Calc hier automatisch eine Summe ausrechnen will, das wird schwierig, weil wir ja Textdaten haben und die schwer aufsummieren können, was uns interessiert ist der Count, also die Anzahl der einzelnen Varianten. Wenn ich jetzt auf OK klicke, dann sehen wir hier die Tabelle, und wir sehen, wir haben 4055 getrennt geschriebene Instanzen und 228 zusammengeschriebene.</p>
+<p>Das ist natürlich sehr basic und das hätten wir nicht unbedingt mit der heruntergeladenen Konkordanz machen müssen, sondern das hätten wir auch relativ schnell eben DWDS selbst rausfinden können, wenn wir einfach die Trefferzahlen uns anschauen, trotzdem ist es ganz hilfreich zu wissen, dass das funktioniert, und natürlich können wir auf diese Weise auch noch andere Dinge uns anschauen, können zum Beispiel nach den einzelnen Textsorten auch filtern, das mache ich jetzt auch, indem ich nochmal eine neue Pivot-Table hier mache und auch hier nehme ich wieder die Current Selection natürlich und ich will also auf der einen Seite die Variante, die ziehe ich jetzt wieder hier in die Zeilen, dann ziehe ich die das Chore in die Spalten und jetzt will ich wieder den Count der Variante in den Spalten, und wir sehen, dass wir jetzt hier das ganze heruntergebrochen nach den einzelnen Textsorten haben und könnten uns jetzt hier genauer überlegen, woran die Verteilung liegen könnte, ob es wir könnten natürlich auch theoretisch noch ein paar statistische Tests oder so machen, um zu gucken, ob es hier signifikante Unterschiede gibt, all das lassen wir erst mal, sondern zunächst wollte ich zeigen, wie man relativ einfach eben eine solche Tabelle erstellen kann und auf diese Weise eben auch relativ einfach sich Verteilungen in einem Korpus anschauen kann.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script>
+
+/* definition of content for the buttons */
+const webex_buttons = {check_hidden:          "<b>&check;</b>",
+                       check_hidden_alt:      "Check answer",
+                       check_shown:           "<b>&lsh;</b>",
+                       check_shown_alt:       "Hide check",
+                       check_of_total:        "/",
+                       solution:              "<b>&quest;</b>",
+                       solution_alt:          "Correct solution",
+                       question_next:         "<b>&#8634;</b>",
+                       question_next_alt:     "Next question",
+                       question_previous:     "",
+                       question_previous_alt: ""}
+
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  document.querySelectorAll(".webex-total_correct").forEach(total => {
+    p = total.closest(".webex-box");
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+    /* no specific class on input node, thus searching via query selector */
+    var checkboxgroups = p.querySelectorAll("div[class=webex-checkboxgroup] input[type=checkbox]").length
+
+    /* show number of correct / total number of answers */
+    total.innerHTML = correct + "&nbsp;" + webex_buttons.check_of_total + "&nbsp;" + (solvemes + radiogroups + checkboxgroups + selects);
+  });
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answer");
+
+  //var cl = elem.parentElement.classList;
+  var cl = this.closest(".webex-box").classList;
+  if (cl.contains("unchecked")) {
+    cl.remove("unchecked");
+    this.innerHTML = webex_buttons.check_shown; //"Hide check";
+    if (webex_buttons.check_shown_alt.length > 0) this.setAttribute("title", webex_buttons.check_shown_alt);
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = webex_buttons.check_hidden; //"Check answer";
+    if (webex_buttons.check_hidden_alt.length > 0) this.setAttribute("title", webex_buttons.check_hidden_alt);
+  }
+}
+
+/* helper functions for checking the webex ID */
+const id_checker = {"fmt": new RegExp("[g-zG-Z]"),
+                    "load": function(e) { return e.getAttribute("id").match("(?<=(-)).*$")[0]; },
+                    "eval": new TextEncoder(),
+                    "dval": new TextDecoder()}
+
+/* Show/hide correct solution */
+solution_func = function() {
+  console.log("webex: show/hide solution");
+
+  var div = this.closest(".webex-question").querySelector(".webex-solution");
+  var cl = div.classList;
+
+  if (cl.contains("visible")) {
+    cl.remove("visible");
+  } else {
+    cl.add("visible");
+  }
+}
+
+/* function to check if the real answer is numeric */
+convert_to_numeric = function(x) {
+  if (typeof x == "string") {
+    /* do nothing */
+  } else if (x.length == 1) {
+    /* take first element */
+    x = x[0]
+  } else {
+    return NaN;
+  }
+
+  /* remove spaces for easier parsing */
+  x = x.replace(/\s/g, "");
+
+  /* Define patterns for different formats, note that spaces have been removed above */
+  const patterns = [
+    {regex: /^[+-]?\d+(\.\d{3})*,\d+$/, decimal: ",", thousand: "." },  // Format: "1.100.100.100,3"
+    {regex: /^[+-]?\d+(,\d{3})*\.\d+$/, decimal: ".", thousand: "," },  // Format: "1,100,100,100.3"
+    {regex: /^[+-]?\d+(\.|\.\d+)?$/, decimal: "." },                    // Format: "1100100100.5" or "1100100100."
+    {regex: /^[+-]?\d+(,|,\d+)$/, decimal: "," }                        // Format: "1100100100,5" or "1100100100,"
+  ];
+
+
+  /* testing all regular expressions, convert to float if possible */
+  for (const { regex, decimal, thousand } of patterns) {
+    if (regex.test(x)) {
+      let numeric = x;
+      if (thousand) numeric = numeric.replace(new RegExp(`\\${thousand}`, "g"), "");
+      numeric = numeric.replace(decimal, ".");
+      return parseFloat(numeric);
+    }
+  }
+
+  /* input of length 1 but none of the known formats, return NaN */
+  return NaN;
+}
+
+/* Checking webex ID, returns formalsol */
+check_id = function(e) {
+  /* loading webex ID */
+  var id = id_checker["load"](e);
+
+  /* extracting answer */
+  let answer = e.dataset.answer;
+
+  /* checking unique id, prepare and return array */
+  if (!id_checker["fmt"].test(id)) {
+    const a = id_checker["eval"].encode(atob(answer));
+    const b = id_checker["eval"].encode(id);
+    const res = a.map((byte, index) => byte^b[index % b.length]);
+    answer = id_checker["dval"].decode(res);
+    /* Replacing &amp; with ' before parsing */
+    answer = answer.replaceAll("&apos;", "'");
+  }
+
+  return JSON.parse(answer);
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  /* avoid that keyup and keychange twice execute this function within nms = 10
+   * ms, clearing inputTimer and add timeout */
+  console.log("webex: check solveme");
+
+  /* float, precision for checking numeric answers */
+  const eps = 0.00000000000001;
+
+  /* get last checked user answer */
+  const question = this.closest(".webex-question")
+
+  /* extracting classes */
+  var cl = this.classList;
+  var my_answer = this.value;
+
+  /* extracting classes */
+  var cl = this.classList;
+
+  /* empty answer? Job done */
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+    return false;
+  }
+
+  /* Find closest (parent) webex-question */
+  let formalsols = check_id(this)
+
+  /* by default we assume the users' answer is incorrect */
+  var user_answer_correct = false;
+
+  /* check if the correct answer is numeric, i.e. if 
+   * formalsols is of length 1 containing one single numeric
+   * value in a known format, else, NaN is returned */
+  const num_formalsol = convert_to_numeric(formalsols);
+  const num_my_answer = convert_to_numeric(my_answer);
+
+  /* if the correct answer is numeric (float), the user's answer
+   * must also be numeric. If not, it is wrong. Else we can
+   * compare floating point numbers */
+  if (!isNaN(num_formalsol) && !isNaN(num_my_answer)) {
+    /* check if the real answer and the user input are numerically the same;
+     * adding 'delta' to avoid precision issues */
+    var diff = Math.abs(num_formalsol - num_my_answer);
+    if (diff < parseFloat(this.dataset.tol) + eps) { user_answer_correct = true; }
+
+  /* if the question contains regex, a regular expression is used
+   * to evaluate the users answer. Allows for multiple regular expressions */
+  } else if (cl.contains("regex")) {
+    for (let i = 0; i < formalsols.length; i++) {
+        let regex = new RegExp(formalsols[i], cl.contains("ignorecase") ? "i" : "");
+        if (regex.test(my_answer)) { user_answer_correct = true; break; }
+    }
+
+  /* else we evaluate on 'string level', considering the creators preferences
+   * regarding set options */
+  } else {
+    /* modify/prepare answer */
+    if (cl.contains("ignorecase")) { my_answer = my_answer.toLowerCase(); }
+    if (cl.contains("nospaces"))   { my_answer = my_answer.replace(/ /g, ""); }
+
+    /* if the real answer includes user input - correct */
+    if (formalsols.includes(my_answer)) {
+      user_answer_correct = true;
+  
+      // added regex bit
+      if (cl.contains("regex")) {
+        answer_regex = RegExp(formalsols.join("|"))
+        if (answer_regex.test(my_answer)) {
+          cl.add("webex-correct");
+        }
+      }
+    }
+  }
+
+  if (user_answer_correct) {
+      cl.add("webex-correct");
+      cl.remove("webex-incorrect");
+  } else {
+      cl.add("webex-incorrect");
+      cl.remove("webex-correct");
+  }
+
+  update_total_correct();
+
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var options   = [];
+  Array.from(this.querySelectorAll("option")).forEach((option, index) => {
+    if (!option.hasAttribute("value") || !option.getAttribute("value") === "blank") {
+      options.push(option);
+    }
+  });
+
+  /* get selected option */
+  function get_selected(options) { return options.findIndex(option => option.selected); }
+  var option_index = get_selected(options)
+
+  /* loading webex ID */
+  var formalsol = check_id(this)
+
+  /* add class for current selection */
+  this.classList.remove("webex-incorrect");
+  this.classList.remove("webex-correct");
+  if (option_index >= 0) {
+    this.classList.add(formalsol[option_index] === 1 ? "webex-correct" : "webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  /* get real answer (binary integer array) */
+  var id = e.target.getAttribute("name");
+  var group = document.querySelector(".webex-radiogroup[id='webex-" + id + "']");
+  var formalsol = check_id(group)
+
+  /* check which radiobuttion is selected (user answer) */
+  function get_checked(radios) {
+    return radios.findIndex(radios => radios.checked);
+  }
+  var radios = Array.from(group.querySelectorAll("input[type='radio']"))
+  var radio_index = get_checked(radios);
+
+  /* remove existing classes */
+  radios.forEach(radio => {
+    let cl = radio.closest("label").classList
+    cl.remove("webex-incorrect");
+    cl.remove("webex-correct");
+  });
+
+  /* add class for current selection */
+  let cl = radios[radio_index].closest("label").classList
+  if (formalsol[radio_index] === 1) {
+      cl.add("webex-correct");
+  } else {
+      cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+
+/* function for checking checkboxgroups answers */
+checkboxgroups_func = function(e) {
+  console.log("webex: check checkboxgroups");
+
+  /* get real answer (binary integer array) */
+  var group = document.querySelector(".webex-checkboxgroup[id='" + this.id + "']");
+  var formalsol = check_id(group);
+
+  /* check which checkbox is checked (user answer) */
+  function get_checked(group) {
+      const checkboxes = Array.from(group.querySelectorAll("input[type='checkbox']"));
+      return checkboxes.reduce((indices, checkbox, index) => {
+          if (checkbox.checked) indices.push(index);
+          return indices;
+      }, []);
+  }
+  var checks = Array.from(group.querySelectorAll("input[type='checkbox']"));
+  var check_index = get_checked(group);
+
+  checks.forEach((e, index) => {
+    var label = e.parentNode;
+    var ans = formalsol[index];
+    if ((e.checked && ans === 1) || (!e.checked && ans === 0)) {
+        label.setAttribute("class", "webex-correct")
+    } else {
+        label.setAttribute("class", "webex-incorrect")
+    }
+  });
+
+  update_total_correct();
+}
+
+/* shuffling array (thanks to stack overflow)
+ * If argument x is an integer we create an integer sequence
+ * from 0, 1, ..., (x - 1) and return a shuffled version. If
+ * the input is an array, we simply shuffle it */
+shuffle_array = function(x) {
+   if (Number.isInteger(x) && !isNaN(x)) {
+     x = Array.from({length: x}, (v, i) => i);
+   }
+   let shuffled = x.map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+   return shuffled;
+}
+
+/* ---------------------------------------------------------
+ * ---------------------------------------------------------
+ * --------------------------------------------------------- */
+window.onload = function() {
+  //console.log("webex: onload");
+
+  /* setting up buttons and actions to show/hide answers */
+  document.querySelectorAll(".webex-check").forEach(section => {
+    section.classList.add("unchecked");
+
+    /* ul to take up the list items with buttons */
+    let button_ul = document.createElement("ul");
+    button_ul.setAttribute("class", "webex-button-list");
+    section.appendChild(button_ul);
+
+    /* button to _check_ if answers given are correct */
+    let li_check = document.createElement("li");
+    button_ul.appendChild(li_check); /* add list item to ul */
+    let btn_check = document.createElement("button");
+    btn_check.innerHTML = webex_buttons.check_hidden;  // "Check answer";
+    btn_check.setAttribute("class", "webex-button webex-button-check");
+    if (webex_buttons.check_hidden_alt.length > 0) btn_check.setAttribute("title", webex_buttons.check_hidden_alt);
+    btn_check.onclick = check_func;
+    li_check.appendChild(btn_check);
+
+    /* span to show current number of points (when _check_ active) */
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    li_check.appendChild(spn);
+
+    /* button to show the _solution_ if there is one */
+    var has_solution = section.parentNode.querySelectorAll(".webex-solution").length > 0;
+    if (has_solution) {
+      let li_solution = document.createElement("li");
+      button_ul.appendChild(li_solution); /* add list item to ul */
+      let btn_solution = document.createElement("button");
+      btn_solution.innerHTML = webex_buttons.solution; // "Correct answer";
+      btn_solution.setAttribute("class", "webex-button webex-button-solution");
+      if (webex_buttons.solution_alt.length > 0) btn_solution.setAttribute("title", webex_buttons.solution_alt);
+      btn_solution.onclick = solution_func;
+      li_solution.appendChild(btn_solution);
+    }
+
+  });
+
+  /* set up webex-solveme inputs */
+  document.querySelectorAll(".webex-solveme").forEach(solveme => {
+    solveme.setAttribute("autocomplete","off");
+    solveme.setAttribute("autocorrect", "off");
+    solveme.setAttribute("autocapitalize", "off");
+    solveme.setAttribute("spellcheck", "false");
+    solveme.value = "";
+
+    /* adjust answer for 'no spaces' (ignore spaces) */
+    if (solveme.classList.contains("nospaces")) {
+      solveme.dataset.answer = solveme.dataset.answer.replace(/ /g, "");
+    }
+
+    /* attach checking function, triggered on key up, change, and when
+     * elemnt is out of focus. Only evaluated once by tracking changes
+     * via variable solveme_last_user_answer */
+    solveme.addEventListener("keyup",  solveme_func);
+    solveme.addEventListener("change", solveme_func);
+    solveme.addEventListener("blur",   solveme_func);
+
+    /* adding span to show correct/incorrect icon */
+    solveme.insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  });
+
+  /* set up radiogroups (single choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+    radiogroup.onchange = radiogroups_func;
+  });
+
+  /* set up checkboxgroups (multiple choice questions with display = "buttons") */
+  document.querySelectorAll(".webex-checkboxgroup").forEach(checkboxgroup => {
+    checkboxgroup.onchange = checkboxgroups_func;
+  });
+
+  /* set up selects (dropdown menus) */
+  document.querySelectorAll(".webex-select").forEach(select => {
+    select.onchange = select_func;
+    /* append webex-icon for correct/incorrect icons */
+    var elem = document.createElement("span")
+    elem.classList.add("webex-icon")
+    select.parentNode.appendChild(elem)
+  });
+
+  /* change to next/previous question if multiple are available */
+  function handleQuestionClick(group, questions, step) {
+    return async function() {
+      /* get question order as integer vector */
+      let questionOrder = group.dataset.questionOrder.split(",").map(str => parseInt(str));
+
+      /* current question/position */
+      let currentPosition = parseInt(group.dataset.currentPosition);
+
+      /* Hide the current question */
+      questions.forEach(question => { question.classList.remove("active"); });
+
+      /* Move to the next question index */
+      currentPosition = (currentPosition + step) % questionOrder.length;
+      if (currentPosition < 0) currentPosition = currentPosition + questionOrder.length
+
+      /* Display the new question */
+      questions[questionOrder[currentPosition]].classList.add("active");
+
+      // Update the currentPosition data attribute on the group div
+      group.dataset.currentPosition = currentPosition;
+    };
+  }
+
+  document.querySelectorAll(".webex-group").forEach(group => {
+    const questions = Array.from(group.querySelectorAll(".webex-question"));
+
+    /* Create vector with question order. If the webex-group does
+     * not have class '.noshuffle' we will randomly shuffle the order */
+    let questionOrder = Array.from({length: questions.length}, (v, i) => i);
+    if (!group.classList.contains("noshuffle")) {
+      questionOrder = shuffle_array(questionOrder);
+    }
+
+    /* take start position (if set) or start at 0 */
+    const currentPosition = parseInt(group.getAttribute("data-start-position")) || 0;
+
+    /* show the default question for each group */
+    questions[questionOrder[currentPosition]].classList.add("active");
+
+    /* store random order of questions as well as current position */
+    group.dataset.questionOrder   = questionOrder;
+    group.dataset.currentPosition = currentPosition;
+
+    /* find all webex-questions, search for .webex-button-list and
+     * populate the list with necessary <li><button>...</button></li> elements */
+    questions.forEach(question => {
+        let button_ul = question.querySelector("ul.webex-button-list");
+
+        let li_next = document.createElement("li");
+        let nextButton = document.createElement("button");
+        nextButton.setAttribute("class", "webex-button webex-button-next");
+        if (webex_buttons.question_next_alt.length > 0) nextButton.setAttribute("title", webex_buttons.question_next_alt);
+        nextButton.innerHTML = webex_buttons.question_next; // "Next question";
+        nextButton.addEventListener("click", handleQuestionClick(group, questions, 1));
+        li_next.appendChild(nextButton);
+
+        let li_previous = document.createElement("li");
+        let previousButton = document.createElement("button");
+        previousButton.setAttribute("class", "webex-button webex-button-previous");
+        if (webex_buttons.question_previous_alt.length > 0) previousButton.setAttribute("title", webex_buttons.question_previous_alt);
+        previousButton.innerHTML = webex_buttons.question_previous; // "Previous question";
+        previousButton.addEventListener("click", handleQuestionClick(group, questions, -1));
+        li_previous.appendChild(previousButton);
+
+        if (webex_buttons.question_previous.length > 0) button_ul.appendChild(li_previous);
+        if (webex_buttons.question_next.length > 0) button_ul.appendChild(li_next);
+    });
+  });
+
+  /* Development options */
+  document.querySelectorAll(".webex-question.check").forEach(question => {
+      question.querySelector(".webex-button-check").click()
+  });
+  document.querySelectorAll(".webex-question.solution").forEach(question => {
+      let btn = question.querySelector(".webex-button-solution");
+      if (btn !== null) { btn.click(); }
+  });
+
+  /* Pre-filling <input> fields */
+  document.querySelectorAll(".webex-question.prefill").forEach(question => {
+      question.querySelectorAll("input.webex-solveme").forEach(solveme => {
+          let x = JSON.parse(solveme.dataset.answer);
+          solveme.value = x[0];
+          /* Trigger the on change event */
+          solveme.dispatchEvent(new Event("change"));
+      });
+
+      /* Pre-filling radiogroups, that is for schoice questions */
+      question.querySelectorAll(".webex-radiogroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let idx = x.indexOf(1);
+          let radios = radiogroup.querySelectorAll('input[type="radio"]');
+          radios[idx].checked = true;
+          /* Trigger the on change event */
+          radios[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for schoice questions w/ dropdown menus */
+      question.querySelectorAll(".webex-select").forEach(dropdown => {
+          let x = JSON.parse(dropdown.dataset.answer);
+          let idx = x.indexOf(1) + 1; /* +1 to skip the first blank option */
+          let options = dropdown.querySelectorAll("option");
+          options[idx].selected = true;
+          /* Trigger the on change event */
+          options[idx].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      /* Pre-filling checkboxgroups, that is for mchoice questions */
+      question.querySelectorAll(".webex-checkboxgroup").forEach(radiogroup => {
+          let x = JSON.parse(radiogroup.dataset.answer);
+          let checkboxes = radiogroup.querySelectorAll('input[type="checkbox"]');
+          for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = x[i];
+          }
+          /* Trigger the on change event */
+          checkboxes[0].dispatchEvent(new Event("change", { bubbles: true }));
+      });
+  });
+
+  /* Show set tolerance (devel option) */
+  function calc_width(x, txt, offset = 20) {
+      /* We do the following:
+       * Create a new span, insert the value we need in the .tolerance
+       * input node, and calculate its offsetWidth. Then remove it
+       * again; this is just used to calculate the required width. */
+      var cwtmp = document.createElement("span");
+      x.appendChild(cwtmp);
+      cwtmp.innerHTML = txt || "";
+      var w = parseInt(cwtmp.getBoundingClientRect().width) + offset;
+      cwtmp.remove();
+      return w;
+  }
+
+  /* If tolerance should be shown (devel option) we calculate:
+   * - the width required to properly display the solution
+   * - the width required to properly display the tolerance
+   * - add a new element to display the tolerance
+   * - reduce the width of the solution input box. */
+  document.querySelectorAll(".webex-question.tolerance").forEach(question => {
+      question.querySelectorAll("input[data-tol]").forEach(elem => {
+          var w = null;
+
+          /* Add new element showing the tolerance */
+          let tol = document.createElement("input");
+          tol.type = "text"; // <inpyt type="text">
+          tol.disabled = true; // Disable input element
+          tol.classList.add("tolerance"); // Appending class
+          tol.value = "Â± " + elem.getAttribute("data-tol");
+
+          /* Add new node */
+          elem.parentNode.insertBefore(tol, elem)
+
+          var body     = document.querySelector("body");
+          //tol.value = "Â± " + "0.0000007";
+          //tol.value = "Â± " + "0.07";
+          w    = calc_width(body, tol.value);
+          wold = parseInt(elem.getBoundingClientRect().width);
+          wmin = calc_width(body, elem.value);
+
+          /* Calculate required width of the 'tolerance' node, and the
+           * reduction of the original 'input' node */
+          let wnew = Math.max(wmin, wold - w);
+          tol.style.width  = w + "px";
+          elem.style.width = wnew + "px";
+      });
+  });
+
+  update_total_correct();
+}
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

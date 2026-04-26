@@ -1,0 +1,29 @@
+Question
+========
+Welche Aussagen zu Referenzkorpora sind richtig?
+
+Answerlist
+----------
+* Referenzkorpora sind Korpora, die möglichst gutes und richtiges Deutsch dokumentieren.
+* Referenzkorpora sind Korpora, die den Stand einer Sprache zu einem bestimmten Zeitpunkt oder in einer bestimmten Zeitspanne möglichst gut und umfassend abbilden wollen.
+* Referenzkorpora sind um Ausgewogenheit hinsichtlich verschiedener Parameter wie z.B. Textsorte (Genre) bemüht.
+* Referenzkorpora haben das Ziel, den Sprachgebrauch einer spezifischen sozialen Gruppe möglichst genau zu beschreiben.
+
+
+Solution
+========
+Referenzkorpora sind Korpora, die den Stand einer Sprache zu einem bestimmten Zeitpunkt oder in einer bestimmten Zeitspanne möglichst gut und umfassend abbilden wollen. Zu diesem Zweck sind sie um Ausgewogenheit hinsichtlich verschiedener Parameter wie z.B. Textsorte (Genre) bemüht.
+
+Answerlist
+----------
+* False
+* True
+* True
+* False
+
+
+Meta-information
+================
+exname: Swiss Capital
+extype: mchoice
+exsolution: 0110

@@ -1,0 +1,129 @@
+---
+title: "Eine kleine Korpusstudie zu Zusammen- und Getrenntschreibung"
+author: "Stefan Hartmann"
+format:
+  html:
+    toc: true
+    css: webex.css
+    include-after-body: webex.js
+knitr:
+  opts_chunk: 
+    collapse: false
+editor: visual
+execute:
+  warning: false
+  error: false
+filters:
+  - quizdown
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(exams2forms)
+```
+
+## Einleitung
+
+
+In diesem Tutorial wollen wir einfache korpuslinguistische Methoden auf schriftlinguistische Fragestellungen anwenden. Dafür wollen wir die Korpora des Digitalen Wörterbuchs der Deutschen Sprache (DWDS) nutzen. Nach Lektüre des Tutorials sollten Sie
+
+- korpuslinguistische Grundbegriffe benennen und erläutern können, insbesondere die der Repräsentativität und Ausgewogenheit;
+
+- in der Lage sein, selbstständig einfache Suchanfragen über die Webschnittstelle des DWDS zu formulieren;
+
+- Herausforderungen bei der korpuslinguistischen Operationalisierung schriftlinguistischer Fragestellungen benennen und darauf aufbauend unterschiedliche methdische Ansätze kritisch einordnen können.
+
+Bevor wir in Fallbeispiele einsteigen,
+
+## Graphematische Variation aus korpuslinguistischer Perspektive
+
+Im Deutschen ist Rechtschreibung bekanntlich in hohem Maße **normiert** und **kodifiziert**. Das heißt, es gibt Rechtschreibnormen, die in Regelwerken niedergelegt sind - beispielsweise im Amtlichen Regelwerk der deutschen Rechtschreibung, das u.a. für Schulen und Behörden verbindlich ist. Weitere normative Vorgaben oder zumindest Empfehlungen finden sich in Werken, die de facto normsetzend geworden sind, auch wenn sie im Gegensatz zum Amtlichen Regelwerk keinen offiziell verbindlichen Status haben, etwa dem Rechtschreibduden.
+
+Dadurch gibt es in der Standard-Schriftsprache des Deutschen relativ wenig Variationsspielraum, auch wenn es Bereiche gibt, in denen die Norm mehrere Varianten zulässt, etwa einige Bereiche der Getrennt- und Zusammenschreibung. Im tatsächlichen Schriftsprachgebrauch gibt es aber natürlich ein hohes Maß an Variation, gerade da, wo die Norm nicht gilt. **Webdaten** bieten vor diesem Hintergrund eine willkommene Möglichkeit, graphematische Variation zu untersuchen: Auch wenn sich im Internet viele Seiten finden, die von mehr oder weniger professionell Schreibenden erstellt werden, die sich in der Regel an die normativen Vorgaben halten, gibt es doch auch viele Seiten, die eher spontansprachlichen Charakter haben, etwa Foren, in denen manche Schreibende auf orthographische Korrektheit achten, andere eher nicht.
+
+## Fallbeispiel 1: Rechtschreiblich schwierige Wörter
+
+Wir können einen Eindruck davon gewinnen, indem wir nach sog. rechtschreiblich schwierigen Wörtern suchen. Nehmen wir die häufig falsch geschriebenen Wörter \<Standard\> und \<Apartheid\> (bei Ersterem könnte die Ähnlichkeit zur \<Standarte\> die häufige Fehlschreibung mit \<t\> teilweise erklären, Letzteres kommt aus dem Afrikaans und wird daher anders als native *-heit*-suffigierte Wörter mit \<d\> geschrieben).
+
+### Unsere Datenbasis: DWDS
+
+::: {#iframe_wrapper style="position:relative;overflow:hidden;width:100%;height:100%;padding-top:56.25%;"}
+<iframe src="https://media.hhu.de/media/embed?key=f3a8d35152b1e993930f2d6e91b4074f&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src class="iframeLoaded" width="100%" height="100%" title="DWDS Webkorpora" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
+
+</iframe>
+:::
+
+### Fallbeispiel 2: Suche nach *zuhause / zu Hause* im DWDS
+
+Im Folgenden wollen wir einen Zweifelsfall der Getrennt- und Zusammenschreibung untersuchen, nämlich *zuhause* vs. *zu Hause*. Auch hierfür nutzen wir wieder das DWDS.
+
+::: {style="position:relative;overflow:hidden;width:100%;height:100%;padding-top:56.25%;"}
+<iframe src="https://media.hhu.de/media/embed?key=44712d4902ee51f00075240cb2da685a&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src class="iframeLoaded" width="100%" height="100%" title="DWDS: Arbeit mit dem CSV-Export für zuhause" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
+
+</iframe>
+:::
+
+::: {.callout-note collapse="true"}
+## Transkript ausklappen
+
+\[erstellt mit [Whisper](https://openai.com/index/whisper/), manuell korrigiert\]
+
+Wenn wir auf die Seite des digitalen Wörterbuch der deutschen Sprache, kurz DWDS, gehen, dann finden wir dort viele verschiedene TextKorpora. Einige sind frei zugänglich, andere nur nach Anmeldung. Die Korpora, die uns jetzt interessieren, sind Web-Korpora. Davon gibt es hier mehrere - die können wir durch Klick auch ein bisschen genauer uns anschauen und nähere Informationen darüber bekommen. Und wir sehen, dass wir zum einen ein Web-XL-Korpus haben; das ist hier in die Kategorie Metakorpora eingeordnet. Metakorpora, das sind solche Korpora, die verschiedene Korpora in sich versammeln. Das heißt, es handelt sich, wie es hier auch formuliert ist, um aggregierte Daten, die man quasi gebündelt durchsuchen kann, oder man kann eben mit den einzelnen Korpora arbeiten. Je nachdem, welcher Forschungsfrage man nachgeht und welche Zusammensetzung der Daten man braucht, ist entweder die Arbeit mit einzelnen, gegebenenfalls auf einzelne Parameter hin ausgewogenen kleineren Korpora sinnvoll – oder eben die Nutzung von solchen aggregierten Daten, wie sie Metakorpora zu Verfügung stellen. Web-XL wäre also ein Web-Korpus, das wir auf DWDS zur Verfügung haben. Und wir sehen hier, dass es eine sehr heterogene Zusammenstellung an Daten ist, zu denen auch ein eigenes Web-Korpus nochmal gehört, dass wiederum ein Einzel-Korpus ist, das quasi ebenfalls eine ganze Reihe an verschiedenen Daten umfasst.
+
+Das sehen wir auch hier, Hundertausende unterschiedliche Webseiten, professionell und privat, also auch da eine sehr heterogene Datenbasis, aber unter gewissen Umständen ist das genau das, was wir eben für unsere Fragestellung brauchen. Darüber hinaus gibt es auch noch einen Web-Monitor, den sehen wir hier. Und dabei handelt es sich um ein sogenanntes Monitor-Korpus. Monitor-Korpora sind solche Korpora, die im Gegensatz zu anderen Korpora eben nicht statisch sind. Bei vielen Korpora ist es ja so, dass man auch damit man Suchanfragen replizierbar machen will, das heißt, damit andere Forschende dann hingehen können und das ganze quasi überprüfen, indem sie die gleiche Suchanfrage nochmal machen. Aus diesem Grund hält man Korpora häufig statisch. Hier haben wir nun ein Korpus, das dynamisch ist, das sich also im Laufe der Zeit weiter entwickelt, wo regelmäßig Daten hinzugefügt werden. Es ist also ein Korpus, das regelmäßig wächst und das ist für uns auch nicht ganz uninteressant. Darin könnten wir schauen, wie sich etwas über die Zeit hinweg entwickelt. Zunächst aber wollen wir uns mit dem in Anführungszeichen normalen Web-Korpus begnügen. Wir sehen nun, dass dieses Web-Korpus nur nach Anmeldung zugänglich ist, deswegen müssen wir uns hier anmelden. Die Registrierung ist kostenlos, das heißt man kann sich hier einfach anmelden, und dann hat man Zugriff auf all diese Ressourcen.
+:::
+
+bla bla
+
+::: {.callout-note collapse="true"}
+## Transkript ausklappen
+
+Wenn wir auf der Startseite des DWDS sind, sehen wir sehr prominent platziert eine Suchleiste. Wenn wir hier ein einzelnes Wort eingeben, z.B. *zuhause* (in einem Wort geschrieben), dann sucht DWDS zunächst in seinen lexikalischen Ressourcen – denn es ist ja zunächst einmal ein Wörterbuch. Was uns interessiert, sind aber die Korpora, die übers DWDS verfügbar sind. Wenn wir ein wenig nach unten scrollen, sehen wir die Sektion "Belege in Korpora". Hier haben wir die Möglichkeit, uns Belege in unterschiedlichen Korpora anzusehen.
+
+Die Wahl des Korpus richtet sich nach unserer Fragestellung. Wenn wir standardsprachlichen Gebrauch untersuchen wollen, bietet es sich an, eines der Kernkorpora des DWDS zu verwenden. Die Kernkorpora sind sogenannte Referenzkorpora. Referenzkorpora zielen darauf ab, eine bestimmte Sprache bzw. sprachliche Varietät zu einem bestimmten Zeitpunkt oder in einer bestimmten Zeitspanne möglichst repräsentativ abzubilden. Im Fall der beiden DWDS-Kernkorpora fürs 20. und 21. Jahrhundert bemüht man sich daher um Ausgewogenheit zwischen vier Textsorten, wie wir auch den Detailinformationen zum Korpus - hier das Kernkorpus fürs 20. Jahrundert - entnehmen können: Belletristik, Zeitung, Wissenschaft und Gebrauchsliteratur. Das Korpus ist somit um Ausgewogenheit zwischen verschiedenen Textsorten bemüht. Weil es die gegenwartsdeutsche Standardsprache abbilden möchte, konzentriert es sich auf vier Textsorten, bei denen zu erwarten ist, dass sie relativ standardnah sind.
+
+Wenn wir nun in die Belege im Kernkorpus des 20. Jh. schauen, sehen wir, dass es 228 Treffer gibt – genau genommen sogar 294, von denen allerdings einige aus urheberrechtlichen Gründen nicht anzeigbar sind. Das ist immer so, wenn wir im DWDS-Kernkorpus suchen.
+
+Gehen wir nochmal zurück zum Wörterbucheintrag von zuhause und suchen von da nach dem Wort. Wenn wir jetzt in die Suchleiste schauen, sehen wir aber noch etwas Erstaunliches: Hier stehen plötzlich zwei Suchanfragen, die durch einen Oder-Operator voneinander getrennt sind - im DWDS besteht der Oder-Operator aus zwei vertikalen Strichen, in anderen Suchabfragesystemen haben wir nur einen vertikalen Strich als Oder-Operator. Weil wir die Suche vom Wörterbucheintrag aus gestartet haben, bezieht DWDS hier automatisch beide Schreibvarianten in die Suche mit ein. Dafür müssen wir wissen: Wenn wir in den DWDS-Korpora einfach nur ein Wort eingeben, ohne weitere Kennzeichnung, dann startet das DWDS eine Lemmasuche – das heißt, es sucht nach allen Wortformen des betroffenen Wortes. Wenn ich also ein Wort wie das Verb *sein* habe - hier gebe ich an, dass es ein Verb sein muss, weil es ja auch das Possessivpronomen *sein* gibt – dann findet DWDS auch *bin, ist, seid* usw., also die Flexionsformen des Lemmas.
+
+Jetzt aber zurück zu zuhause. Wir sehen, dass die zweite Suchanfrage ein \@-Zeichen beinhaltet. Das bedeutet in der DWDS-Syntax, dass genau diese Wortform gesucht werden soll, nicht auch irgendwelche Flexionsformen.
+
+Zusammengenommen findet die Suchanfrage also genau die beiden Varianten, die wir wollen: einmal die zusammengeschriebene, einmal die getrennt geschriebene. Mit "Treffer exportieren" können wir uns die Daten auch als Spreadsheet herunterladen und dann damit weiterarbeiten.
+:::
+
+### Fragen zum Video
+
+```{r referenzquiz, echo = FALSE, message = FALSE, results = "asis"}
+exams2forms("quizzes/referenzkorpora.Rmd", solution = FALSE)
+```
+
+
+::: {style="position:relative;overflow:hidden;width:100%;height:100%;padding-top:56.25%;"}
+<iframe src="https://media.hhu.de/media/embed?key=44712d4902ee51f00075240cb2da685a&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src class="iframeLoaded" width="100%" height="100%" title="DWDS: Arbeit mit dem CSV-Export für zuhause" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
+
+</iframe>
+:::
+
+::: {.callout-note collapse="true"}
+## Transkript ausklappen
+
+\[erstellt mit [Whisper](https://openai.com/index/whisper/), manuell korrigiert\]
+
+Okay, ich habe die Datei jetzt hier heruntergeladen, und was wir hier dann haben, ist eine sogenannte Konkordanz. Eine Konkordanz ist eine Liste mit Korpustreffern, die in der Regel im sogenannten Keyword-in-Context-Format erscheinen, wie wir es auch hier schon im DWDS gesehen haben. Das heißt, wir haben das Keyword, nach dem wir gesucht haben, in unserem Fall *zu Hause,* und wir haben den Kontext dazu. Der Kontext, der wird wichtig, wenn wir weitere Schritte damit unternehmen, wenn wir beispielsweise Annotationen hinzufügen wollen. Wir könnten beispielsweise *zu Hause* daraufhin annotieren, wie es gebraucht wird, also ob es in Konstruktionen wie *zu Hause bleiben, zu Hause sein* und so weiter gebraucht wird oder in anderen Kontexten. Das wollen wir an der Stelle noch nicht machen, sondern wir wollen zunächst einmal anschauen, uns anschauen, wie eine solche Datei aussieht.
+
+Ich habe das jetzt so konfiguriert, dass die csv-Datei mit LibreOffice Calc geöffnet wird, mit Excel würde das aber ganz ähnlich gehen und hier sehen wir das zunächst eine Abfrage kommt, wie die Daten formatiert sind. Das ist ganz hilfreich, weil csv-Dateien manchmal leichte Unterschiede in ihrer Formatierung haben. Hier ist schon alles richtig eingestellt. Es handelt sich um eine komma-separierte Tabelle, deswegen auch csv wegen comma-separated values. Und wir haben Anführungszeichen als sogenannte String Delimiter. Das heißt, wenn wir irgendwo zum Beispiel ein Komma im Text haben, das nicht die Spalten voneinander abgrenzt, dann wird mit den Anführungszeichen die Zusammengehörigkeit der entsprechenden Passagen angezeigt. Damit wird also angezeigt, dass das Komma keine spaltenseparierende Funktion hat, sondern zum Text gehört. Und gerade, wenn wir solche Korpusdaten haben, da kommen ja schon mal Kommas vor im Kontext links oder rechts von unserem Keyword.
+
+Okay, ich öffne jetzt die Datei, und hier sehen wir, dass wir mehrere Spalten haben. In der ersten Spalte werden die Treffer durchnummeriert, dann haben wir hier das Datum, wobei hier das Ja für uns wahrscheinlich am interessantesten ist. Wir haben das Genre, das wäre dann eine der vier Textsorten, die im DWDS vorhanden sind. Wir haben bibliografische Angaben, und dann haben wir den linken Kontext, unseren Treffer und den rechten Kontext.
+
+Ich mache hier mal den linken Kontext ein bisschen kleiner, damit wir uns mehr auf die Treffer konzentrieren können, auch den rechten Kontext mache ich ein bisschen kleiner, und in der Regel formatiere ich das Ganze dann auch noch so, dass der linke Kontext rechtsbündig ist, weil man dann schön hier durchlesen kann, und das Ganze speichere ich jetzt auch mal als nicht mehr als csv-Datei, sondern in dem Fall als LibreOffice Spreadsheet-Datei (ODS), damit wir auch weitere Formatierungsoptionen wie Filtern beispielsweise nutzen und die speichern können. Wenn wir mit csv weiterarbeiten würden, dann würden diese Formatierungen beispielsweise dann nicht gespeichert werden, sondern wir hätten einfach nur den Text.
+
+Jetzt könnten wir weitere Annotationen hinzufügen, und eine Annotation, die uns natürlich besonders interessiert, ist die Variante, also handelt es sich um zu Hause zusammengeschrieben oder getrennt geschrieben. Das können wir zum Glück sehr einfach annotieren, indem wir hier einen Filter setzen und dann die Hits sortieren, denn wir sehen, wenn wir die Getrennschreibung haben, dann ist nur zu in unserer Hit-Spalte, in allen anderen Fällen ist zu Hause in unserer Hit-Spalte. Und wenn wir das Ganze jetzt einfach mal aufsteigend sortieren, dann sehen wir, wir haben jetzt alle *zu Hause* getrennt geschrieben beisammen und alle zu Hause zusammengeschrieben beisammen. Das heißt, wir können hier einfach eintragen: *zu Hause* getrennt geschrieben – und können jetzt hier das Ganze bis zum Ende des Blocks, wo wir die getrennt geschriebenen Einheiten haben, runterziehen. Wenn ich die Umschalttaste betätige und dabei auf eine Zelle hier klicke, dann wird quasi der ganze Bereich bis zu dem Punkt, an dem ich klicke, markiert, also Umschalttaste, Linksklick, und wir sehen, hier ist jetzt alles markiert. Ganz oben habe ich bereits *zu Hause* in zwei Wörtern eingetragen, das heißt, was ich jetzt machen kann, ist, ich kann Steuerung und D drücken, und dann wird das Ganze übertragen auf den gesamten markierten Bereich. Also: Strg + D, und hier haben wir die Annotation in Windeseile auf diesen ganzen Bereich übertragen. Geht in Excel übrigens ganz genau so.
+
+*Zuhause* in einem Wort ist dann der Rest, und da machen wir das Gleiche nochmal, also Umschalt und Linksklicken, Steuerung und D – und wir haben in wenigen Minuten die gesamte Tabelle mit fast 5.000 Treffern anotiert, natürlich nur auf diesen einen Parameter hin; es gäbe noch viele weitere Parameter, die interessant wären, die wir aber jetzt erst mal außen vor lassen. Das Ganze können wir, wenn wir wollen, jetzt noch ein bisschen weiter analysieren.
+
+Wir können beispielsweise hier in Data Pivot Table eine sogenannte Pivot Tabelle erstellen und wir sehen, hier wird gleich die ganze Auswahl automatisch ausgewählt, das ist gut, wir wollen zumindest theoretisch in der Lage sein, alles mit einzubeziehen und hier können wir dann solche Tabellen erstellen, die einfachste Tabelle wäre, dass wir erst mal rausfinden wollen, wie viele Belege haben wir eigentlich von jeder der beiden Varianten, dafür ziehe ich die Variante in das Zeilenfeld und auch in das Datenfeld. Wir sehen, dass Calc hier automatisch eine Summe ausrechnen will, das wird schwierig, weil wir ja Textdaten haben und die schwer aufsummieren können, was uns interessiert ist der Count, also die Anzahl der einzelnen Varianten. Wenn ich jetzt auf OK klicke, dann sehen wir hier die Tabelle, und wir sehen, wir haben 4055 getrennt geschriebene Instanzen und 228 zusammengeschriebene.
+
+Das ist natürlich sehr basic und das hätten wir nicht unbedingt mit der heruntergeladenen Konkordanz machen müssen, sondern das hätten wir auch relativ schnell eben DWDS selbst rausfinden können, wenn wir einfach die Trefferzahlen uns anschauen, trotzdem ist es ganz hilfreich zu wissen, dass das funktioniert, und natürlich können wir auf diese Weise auch noch andere Dinge uns anschauen, können zum Beispiel nach den einzelnen Textsorten auch filtern, das mache ich jetzt auch, indem ich nochmal eine neue Pivot-Table hier mache und auch hier nehme ich wieder die Current Selection natürlich und ich will also auf der einen Seite die Variante, die ziehe ich jetzt wieder hier in die Zeilen, dann ziehe ich die das Chore in die Spalten und jetzt will ich wieder den Count der Variante in den Spalten, und wir sehen, dass wir jetzt hier das ganze heruntergebrochen nach den einzelnen Textsorten haben und könnten uns jetzt hier genauer überlegen, woran die Verteilung liegen könnte, ob es wir könnten natürlich auch theoretisch noch ein paar statistische Tests oder so machen, um zu gucken, ob es hier signifikante Unterschiede gibt, all das lassen wir erst mal, sondern zunächst wollte ich zeigen, wie man relativ einfach eben eine solche Tabelle erstellen kann und auf diese Weise eben auch relativ einfach sich Verteilungen in einem Korpus anschauen kann.
+:::
