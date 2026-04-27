@@ -1,0 +1,31 @@
+Question
+========
+Welche weiteren Treffer wären für uns noch interessant, werden aber durch die obige Anfrage nicht gefunden?
+
+Answerlist
+----------
+* weitere Wörter auf -heit/-heid, z.B. \<Freiheit\>
+* Komposita mit \<Standard\> bzw. \<Apartheid\> als Erstglied wie \<Standardsprache\> oder \<Apartheidsregierung\>
+* Flexionsformen wie \<Standards\> (Plural)
+* formähnliche Wörter wie \<Standarte\> oder \<Apartment\>
+* Komposita mit \<Standard\> oder \<Apartheid\> als Bestimmungsglied wie \<TEI-P5-Standard\>
+
+
+Solution
+========
+bla bla 
+
+Answerlist
+----------
+* False
+* True
+* True
+* False
+* True
+
+
+Meta-information
+================
+exname: Spezialkorpora
+extype: mchoice
+exsolution: 01101

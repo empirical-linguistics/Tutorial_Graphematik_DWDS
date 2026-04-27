@@ -1,0 +1,45 @@
+Question
+========
+Welche Textsorten beinhaltet das DWDS-Kernkorpus des 20. Jahrhunderts?
+
+Answerlist
+----------
+* Gebrauchsliteratur
+* Wissenschaft
+* Zeitung
+* Belletristik
+* Kochrezepte
+* Bedienungsanleitungen
+* WhatsApp-Chats
+* Gesetzestexte
+* Liebesbriefe
+* Soldatenbriefe
+* Filmuntertitel
+
+
+Solution
+========
+bla bla
+
+Answerlist
+----------
+* True
+* True
+* True
+* True
+* False
+* False
+* False
+* False
+* False
+* False
+* False
+
+
+
+Meta-information
+================
+exname: Spezialkorpora
+extype: mchoice
+exsolution: 11110000000
+exshuffle: 7

@@ -26,7 +26,6 @@ library(exams2forms)
 
 ## Einleitung
 
-
 In diesem Tutorial wollen wir einfache korpuslinguistische Methoden auf schriftlinguistische Fragestellungen anwenden. Dafür wollen wir die Korpora des Digitalen Wörterbuchs der Deutschen Sprache (DWDS) nutzen. Nach Lektüre des Tutorials sollten Sie
 
 - korpuslinguistische Grundbegriffe benennen und erläutern können, insbesondere die der Repräsentativität und Ausgewogenheit;
@@ -35,7 +34,7 @@ In diesem Tutorial wollen wir einfache korpuslinguistische Methoden auf schriftl
 
 - Herausforderungen bei der korpuslinguistischen Operationalisierung schriftlinguistischer Fragestellungen benennen und darauf aufbauend unterschiedliche methdische Ansätze kritisch einordnen können.
 
-Bevor wir in Fallbeispiele einsteigen,
+Bevor wir in Fallbeispiele einsteigen, müssen wir zunächst einige grundlegende eher theoretische Fragen klären, die sich stellen, wenn wir schriftlinguistische Fragestellungen mit Korpora untersuchen wollen.
 
 ## Graphematische Variation aus korpuslinguistischer Perspektive
 
@@ -45,37 +44,130 @@ Dadurch gibt es in der Standard-Schriftsprache des Deutschen relativ wenig Varia
 
 ## Fallbeispiel 1: Rechtschreiblich schwierige Wörter
 
-Wir können einen Eindruck davon gewinnen, indem wir nach sog. rechtschreiblich schwierigen Wörtern suchen. Nehmen wir die häufig falsch geschriebenen Wörter \<Standard\> und \<Apartheid\> (bei Ersterem könnte die Ähnlichkeit zur \<Standarte\> die häufige Fehlschreibung mit \<t\> teilweise erklären, Letzteres kommt aus dem Afrikaans und wird daher anders als native *-heit*-suffigierte Wörter mit \<d\> geschrieben).
+Wir können einen Eindruck von diesen Unterschieden gewinnen, indem wir nach sog. rechtschreiblich schwierigen Wörtern suchen. Nehmen wir die häufig falsch geschriebenen Wörter \<Standard\> und \<Apartheid\> (bei Ersterem könnte die Ähnlichkeit zur \<Standarte\> die häufige Fehlschreibung mit \<t\> teilweise erklären, Letzteres kommt aus dem Afrikaans und wird daher anders als native *-heit*-suffigierte Wörter mit \<d\> geschrieben).
+
+Zur Untersuchung dieser Variationsphänomene eignen sich die Korpora des DWDS besonders gut, da wir hier sowohl Datenressourcen finden, die eher standardsprachlichen Gebrauch dokumentieren, als auch solche, die sich dezidiert verschiedenen Arten von Non-Standard-Sprachgebrauch widmen.
 
 ### Unsere Datenbasis: DWDS
 
+Wir nutzen für unsere kleine Fallstudie die Korpora, die über das [Digitale Wörterbuch der Deutschen Sprache (DWDS)](https://www.dwds.de/) zugänglich sind. Das DWDS ist eine sehr reichhaltige Ressource, das verschiedene Wörterbücher, aber eben auch Korpora, also Sammlungen authentischer Sprachdaten, zusammenführt. Wenn Sie auf der Startseite des DWDS auf "Textkorpora" klicken, sehen Sie eine breite Palette von Korpusressourcen, die Sie nutzen können.
+
+Bevor Sie weiterlesen, machen Sie sich zunächst kurz mit der DWDS-Website vertraut und lesen Sie die Überblicksseite zu Textkorpora.
+
+- Welche Korpora sind über das DWDS verfügbar?
+
+- Worin unterscheiden sich die Korpora?
+
+- Wer kann unter welchen Bedingungen auf die Korpora zugreifen?
+
+Sie werden schnell merken, dass das DWDS zwischen drei Typen von Korpora unterscheidet: Referenzkorpora, Spezialkorpora und Metakorpora.
+
+::: callout-tip
+## Typen von Korpora
+
+Im DWDS finden Sie verschiedene Arten von Korpora:
+
+- **Referenzkorpora**, die versuchen, einen möglichst umfassenden Überblick über eine Sprache (hier: das Deutsche) zu einem bestimmten Zeitpunkt bzw. über eine gewisse Zeitspanne hinweg zu geben und dafür um Ausgewogenheit hinsichtlich bestimmter Parameter (hier z.B.: Textsorten) bemüht sind.
+
+- **Spezialkorpora**, die ganz bestimmte Varietäten einer Sprache dokumentieren, z.B. gruppenspezifischen Sprachgebrauch, bestimmte eng eingegrenzte Textsorten (z.B. Beauty-Blogs) oder Sprachgebrauch, der von bestimmten kontextuellen und situationalen Faktoren geprägt ist (z.B. Corona-Korpus).
+
+- **Metakorpora**, die selbst eigentlich keine Korpora sind, sondern vielmehr mehrere Korpora aggregieren. Beispielsweise enthält das Metakorpus WebXL sowohl das DWDS-Webkorpus als auch weitere internetbasierte Spezialkorpora (z.B. das Ballsport-Korpus und ein Korpus aus Beauty-Blogs).
+:::
+
+### Frage zu Korpustypen
+
+```{r spezialquiz, echo = FALSE, message = FALSE, results = "asis"}
+exams2forms("quizzes/spezialkorpora.Rmd", solution = TRUE)
+```
+
+### Erste einfache Suchanfragen
+
+Wenn wir uns mit dem zweiten Fallbeispiel beschäftigen, werden wir noch genauer auf die unterschiedlichen über das DWDS verfügbaren Korpora eingehen. Auch die Suchabfragesprache werden wir noch etwas genauer kennenlernen. Zunächst aber wollen wir nach den ganz einfachen vorhin genannten Beispielen suchen: \<Standard\> vs. \<Standart\> und \<Apartheid\> vs. \<Apartheit\>.
+
+Dafür müssen wir zunächst wissen, dass es im DWDS eine sehr einfache Möglichkeit gibt, nach genauen Wortformen zu suchen, nämlich indem wir ein \@-Zeichen voranstellen. Tun wir das nicht, dann versucht DWDS eine Lemmasuche, d.h. es werden alle Wortformen, die zu einem Lexem gehören, gesucht. Wenn wir zum Beispiel `sein` in die Suchabfragemaske eingeben würden, ggf. noch mit der Spezifikation `sein with \$p=V\*`, um klarzumachen, dass es sich um ein Verb handeln soll (und nicht um das Possessivpronomen *sein* wie in *sein Haus*), dann findet DWDS auch Flexionsformen wie *ist, bin, waren* etc. Bei der Suchanfrage `@sein with \$p=V\*` hingegen wird nur die genaue Form \<sein\> gefunden.
+
+Das können wir uns nun zunutze machen, um die insgesamt vier Wortformen, für die wir uns interessieren, zu suchen, und zwar in zwei verschiedenen Korpora, die die beiden Kontexte, die wir vergleichen wollen, repräsentieren: einmal standardnahen Sprachgebrauch, einmal eher spontanschriftliche Produktion, wie wir sie z.B. in vielen Webkontexten erwarten. Daher nutzen wir zum einen das DWDS-Kernkorpus des 21. Jahrhunderts, um einerseits möglichst standardnahe, andererseits aber auch möglichst aktuelle Daten verwenden zu können, zum anderen das DWDS-Webkorpus, das zwar ebenfalls Daten aus einigen standardnahen Quellen wie News-Seiten umfasst, aber eben auch z.B. Daten aus Foren und anderen Quellen, bei denen wir weniger standardnahe Schriftsprachproduktion erwarten können, beinhaltet.
+
+Können Sie aus den obigen Ausführungen selbstständig die Suchanfragen formulieren, die wir brauchen? Zunächst wollen wir nur die genauen Wortformen \<Standard\>, \<Standart\>, \<Apartheid\> und \<Apartheid\> finden.
+
+::: {.callout-tip collapse="true"}
+## Suchanfragen ausklappen
+
+Mit diesen vier Suchanfragen finden wir die vier gesuchten Wortformen:
+
+`\@Standard`
+
+`\@Standart`
+
+`\@Apartheid`
+
+`\@Apartheit`
+:::
+
+Gehen wir das Ganz am Beispiel `@Standard` durch. Wenn wir den Suchausdruck unter www.dwds.de in die Suchleiste eingeben, bekommen wir zunächst den Hinweis:
+
+"Es tut uns leid, Ihre Anfrage **\@Standard** ist nicht in unseren gegenwartssprachlichen lexikalischen Quellen vorhanden."
+
+Das liegt daran, dass DWDS zunächst seine lexikographischen Ressourcen durchsucht, da es zunächst einmal, wie sein Name schon sagt, ein Wörterbuch ist. Wir sind ja aber an den Korpusdaten interessiert. Wenn wir weiter nach unten scrollen, sehen wir die Option "Suche in ausgewählten Korpora nach ›\@Standard‹". Die beiden Korpora, die wir durchsuchen möchten, sind aber bei den vier hier zur Auswahl stehenden Korpora nicht dabei, deshalb müssen wir noch etwas weiter nach unten scrollen, wo wir in der Leiste rechts die Option "Beleg in Korpora" finden. Hier können wir nun auf "DWDS-Kernkorpus 21" klicken und sehen, dass unsere Suche 47 Treffer bringt – bzw. 935, wenn man die Treffer hinzunimmt, die aus urheberrechtlichen Gründen nicht anzeigbar sind.
+
+Dass einige Treffer aus urheberrechtlichen Gründen nicht anzeigbar sind (einige Quellen stehen nur den DWDS-Mitarbeitenden zur Verfügung), ist bei Suchen in den DWDS-Kernkorpora immer der Fall; eine so hohe Diskrepanz wie hier ist allerdings ungewöhnlich und deutet darauf hin, dass sich möglicherweise sehr viele Belege in einer öffentlich nicht zugänglichen Quelle clustern.
+
+Wenn wir nun die Suchanfrage in `@Standart` ändern, sehen wir, dass tatsächlich gar keine Treffer gefunden werden. Wenn wir hingegen das Korpus wechseln und zum DWDS-Webkorpus gehen (nur nach Anmeldung zugänglich, hierfür ist eine einmalige kostenlose Registrierung beim DWDS notwendig), sehen wir, dass es hier ganze 16. 318 Treffer gibt. Für `@Standard` hingegen finden sich im gleichen Korpus 756 .327 Treffer. Das liegt daran, dass das Webkorpus natürlich deutlich größer ist als DWDS21. Dennoch: Der Anteil von \<Standart\> an allen Belegen für \<Standard\> und \<Standart\> macht im Webkorpus immerhin 2,11 % aus.
+
+```{r}
+#| echo: false
+
+matrix(c(935, 0, 757327, 16318), ncol = 2, dimnames = list(c("DWDS21", "Webkorpus"), c("Standard", "Standart"))) %>% assocplot()
+
+```
+
+Versuchen Sie nun eigenständig, die Ergebnisse für \<Apartheid\>/\<Apartheit\> zu gewinnen und auszuwerten.
+
+::: {.callout-tip collapse="true"}
+## Ergebnisse ausklappen
+
+Ähnlich wie beim vorherigen Beispiel finden wir im Kernkorpus des 21. Jahrhunderts keinen einzigen Beleg für \<Apartheit\> und 15 für \<Apartheid\>; im Webkorpus finden wir 15.872 Belege für \<Apartheid\> und 840 für \<Apartheit\>. Damit macht die \<t\>-Schreibung immerhin einen Anteil von 5,03% der Belege aus dem Webkorpus aus.
+:::
+
+Die Suche nach den vier Wortformen bringt natürlich gewisse Einschränkungen mit sich.
+
+```{r precisionquiz, echo = FALSE, message = FALSE, results = "asis"}
+exams2forms("quizzes/precisionrecall.Rmd", solution = FALSE)
+```
+
+::: {.callout-tip collapse="true"}
+## Lösungen anzeigen
+
+Da wir nur nach der genauen Wortform gesucht haben, entgehen uns natürlich Flexionsformen, die nicht der gesuchten Form entsprechen, ebenso wie Wortbildungsprodukte, in denen die beiden gesuchten Ausdrücke vorkommen.
+
+Ob wir umgekehrt bei nativen *heit*-suffigierten Wörtern Fehlschreibungen mit \<-heid\> finden, ist zwar prinzipiell eine interessante Frage, würde aber an dieser Stelle zu weit führen, da wir erst einmal nur an der Verteilung der Schreibvarianten dieser beiden Wörter interessiert sind. Dies auch deshalb, weil eine mögliche Fehlschreibung nativer *heit*-suffigierter Wörter mit \<d\> nicht unbedingt etwas mit \<Apartheid\> zu tun haben muss, sondern auch durch niederländischen Sprachkontakteinfluss bedingt sein kann.
+
+Umgekehrt wäre zwar der mögliche Einfluss formähnlicher Wörter wie \<Standarte\> durchaus eine nähere Betrachtung wert, würde aber ebenfalls zu weit führen und genaue Überlegungen zur Operationalisierung nach sich ziehen: So müsste erst einmal festgelegt werden, was überhaupt als formähnlich gilt. Ob Sprachbenutzende wirklich eine Assoziation zwischen \<Standard\> und \<Standarte\> oder zwischen \<Apartment\> und \<Apartheid\> machen, müsste im Zweifelsfall auch erst einmal unabhängig auf Grundlage von psycholinguistischer Evidenz nachgewiesen werden.
+:::
+
+Wenn Sie mögen, können Sie versuchen, Suchanfragen zu formulieren, die z.B. auch Komposita und Flexionsformen mit einbeziehen. Die [Dokumentation der DWDS-Korpussuche](https://www.dwds.de/d/korpussuche) kann Ihnen dabei weiterhelfen. In [diesem Tutorial](https://empirical-linguistics.github.io/ems/) finden Sie außerdem weitere (hoffentlich) hilfreiche Hinweise zu ersten Schritten in der Korpuslinguistik.
+
+### Fazit zum ersten Fallbeispiel
+
+Unser erstes Fallbeispiel hat zunächst einmal unsere Intuition bestätigt, dass Non-Standard-Varianten sich im Webkorpus häufiger (bzw. überhaupt erst) finden als in einem Referenzkorpus, das lektorierte Standardsprache dokumentiert. Dabei müssen wir allerdings die unterschiedliche Korpusgröße bedenken und im Hinterkopf behalten: *absence of evidence is not evidence of absence* – mit anderen Worten, nur weil wir die Schreibungen mit \<t\> im Kernkorpus nicht finden, heißt es nicht, dass sie nicht manchmal auch in lektorierter Zeitungs- oder Verlagssprache auftauchen. Sie sind nur eben deutlich seltener als die standardkonformen Formen. Und alles deutet darauf hin, dass die Wahrscheinlichkeit ihres Auftretens in nicht ganz so standardnahen Webdaten höher ist als in den standardnahen Textsorten im Referenzkorpus.
+
+Viel mehr konnten und wollten wir in diesem Fall nicht herausfinden – aber die Methoden, die wir kennengelernt haben, lassen sich natürlich auch auf komplexere Fragestellungen übertragen. Auch unser konkretes Beispiel ließe sich noch weiterspinnen, mit Fragen wie:
+
+- Wie entwickelt sich die Schreibung der beiden Beispielwörter über die Zeit hinweg? Lässt sich zum Beispiel bei \<Apartheid\> in der Zeit, in der das Thema aktuell war, mehr oder weniger Variation beobachten? (Dafür müssten wir uns natürlich Daten aus dem 20. Jahrhundert und im Falle von *Standard* ggf. auch noch ältere Daten anschauen.)
+
+- Ist die Tendenz zur \<t\>-Schreibung in bestimmten Kontexten stärker bzw. schwächer ausgeprägt als in anderen? Lässt sich womöglich auch eine unterschiedliche regionale Verteilung zeigen (z.B. seltenere Fehlschreibung von \<Apartheid\> mit \<t\> in Gegenden mit niederländischem Sprachkontakteinfluss?)
+
+In authentischen Korpusstudien wäre es natürlich auch wichtig, die konkreten Fragestellungen und Hypothesen zuerst genauer zu entwickeln und sich dann für ein Korpus und eine Art der Operationalisierung zu entscheiden. Auch dazu gibt es in [diesem Tutorial](https://empirical-linguistics.github.io/ems/) nähere Informationen.
+
+## Fallbeispiel 2: Suche nach *zuhause / zu Hause* im DWDS
+
+Nachdem wir uns nun die Variation zwischen einer orthographisch korrekten und einer normwidrigen Variante näher betrachtet haben, wollen wir im Folgenden einen Zweifelsfall der Getrennt- und Zusammenschreibung untersuchen, nämlich *zuhause* vs. *zu Hause*. Auch hierfür nutzen wir wieder das DWDS. Der folgende Screencast zeigt, wie diese Korpussuche funktioniert.
+
 ::: {#iframe_wrapper style="position:relative;overflow:hidden;width:100%;height:100%;padding-top:56.25%;"}
-<iframe src="https://media.hhu.de/media/embed?key=f3a8d35152b1e993930f2d6e91b4074f&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src class="iframeLoaded" width="100%" height="100%" title="DWDS Webkorpora" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
+<iframe src="https://media.hhu.de/media/embed?key=2e6fcf7587dcc78428a62790c3c3c6e9&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src class="iframeLoaded" width="100%" height="100%" title="DWDS: Suche nach zuhause" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
 
 </iframe>
 :::
-
-### Fallbeispiel 2: Suche nach *zuhause / zu Hause* im DWDS
-
-Im Folgenden wollen wir einen Zweifelsfall der Getrennt- und Zusammenschreibung untersuchen, nämlich *zuhause* vs. *zu Hause*. Auch hierfür nutzen wir wieder das DWDS.
-
-::: {style="position:relative;overflow:hidden;width:100%;height:100%;padding-top:56.25%;"}
-<iframe src="https://media.hhu.de/media/embed?key=44712d4902ee51f00075240cb2da685a&amp;width=720&amp;height=405&amp;autoplay=false&amp;controls=true&amp;autolightsoff=false&amp;loop=false&amp;chapters=false&amp;playlist=false&amp;playlistautoplay=false&amp;playlistloop=false&amp;related=false&amp;responsive=true&amp;t=0&amp;fetchpriority=high" data-src class="iframeLoaded" width="100%" height="100%" title="DWDS: Arbeit mit dem CSV-Export für zuhause" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style="top:0; bottom:0; left:0; right:0; position:absolute;" fetchpriority="high">
-
-</iframe>
-:::
-
-::: {.callout-note collapse="true"}
-## Transkript ausklappen
-
-\[erstellt mit [Whisper](https://openai.com/index/whisper/), manuell korrigiert\]
-
-Wenn wir auf die Seite des digitalen Wörterbuch der deutschen Sprache, kurz DWDS, gehen, dann finden wir dort viele verschiedene TextKorpora. Einige sind frei zugänglich, andere nur nach Anmeldung. Die Korpora, die uns jetzt interessieren, sind Web-Korpora. Davon gibt es hier mehrere - die können wir durch Klick auch ein bisschen genauer uns anschauen und nähere Informationen darüber bekommen. Und wir sehen, dass wir zum einen ein Web-XL-Korpus haben; das ist hier in die Kategorie Metakorpora eingeordnet. Metakorpora, das sind solche Korpora, die verschiedene Korpora in sich versammeln. Das heißt, es handelt sich, wie es hier auch formuliert ist, um aggregierte Daten, die man quasi gebündelt durchsuchen kann, oder man kann eben mit den einzelnen Korpora arbeiten. Je nachdem, welcher Forschungsfrage man nachgeht und welche Zusammensetzung der Daten man braucht, ist entweder die Arbeit mit einzelnen, gegebenenfalls auf einzelne Parameter hin ausgewogenen kleineren Korpora sinnvoll – oder eben die Nutzung von solchen aggregierten Daten, wie sie Metakorpora zu Verfügung stellen. Web-XL wäre also ein Web-Korpus, das wir auf DWDS zur Verfügung haben. Und wir sehen hier, dass es eine sehr heterogene Zusammenstellung an Daten ist, zu denen auch ein eigenes Web-Korpus nochmal gehört, dass wiederum ein Einzel-Korpus ist, das quasi ebenfalls eine ganze Reihe an verschiedenen Daten umfasst.
-
-Das sehen wir auch hier, Hundertausende unterschiedliche Webseiten, professionell und privat, also auch da eine sehr heterogene Datenbasis, aber unter gewissen Umständen ist das genau das, was wir eben für unsere Fragestellung brauchen. Darüber hinaus gibt es auch noch einen Web-Monitor, den sehen wir hier. Und dabei handelt es sich um ein sogenanntes Monitor-Korpus. Monitor-Korpora sind solche Korpora, die im Gegensatz zu anderen Korpora eben nicht statisch sind. Bei vielen Korpora ist es ja so, dass man auch damit man Suchanfragen replizierbar machen will, das heißt, damit andere Forschende dann hingehen können und das ganze quasi überprüfen, indem sie die gleiche Suchanfrage nochmal machen. Aus diesem Grund hält man Korpora häufig statisch. Hier haben wir nun ein Korpus, das dynamisch ist, das sich also im Laufe der Zeit weiter entwickelt, wo regelmäßig Daten hinzugefügt werden. Es ist also ein Korpus, das regelmäßig wächst und das ist für uns auch nicht ganz uninteressant. Darin könnten wir schauen, wie sich etwas über die Zeit hinweg entwickelt. Zunächst aber wollen wir uns mit dem in Anführungszeichen normalen Web-Korpus begnügen. Wir sehen nun, dass dieses Web-Korpus nur nach Anmeldung zugänglich ist, deswegen müssen wir uns hier anmelden. Die Registrierung ist kostenlos, das heißt man kann sich hier einfach anmelden, und dann hat man Zugriff auf all diese Ressourcen.
-:::
-
-bla bla
 
 ::: {.callout-note collapse="true"}
 ## Transkript ausklappen
@@ -97,6 +189,10 @@ Zusammengenommen findet die Suchanfrage also genau die beiden Varianten, die wir
 
 ```{r referenzquiz, echo = FALSE, message = FALSE, results = "asis"}
 exams2forms("quizzes/referenzkorpora.Rmd", solution = FALSE)
+```
+
+```{r textsortenquiz, echo = FALSE, message = FALSE, results = "asis"}
+exams2forms("quizzes/textsorten.Rmd", solution = FALSE)
 ```
 
 
@@ -127,3 +223,11 @@ Wir können beispielsweise hier in Data Pivot Table eine sogenannte Pivot Tabell
 
 Das ist natürlich sehr basic und das hätten wir nicht unbedingt mit der heruntergeladenen Konkordanz machen müssen, sondern das hätten wir auch relativ schnell eben DWDS selbst rausfinden können, wenn wir einfach die Trefferzahlen uns anschauen, trotzdem ist es ganz hilfreich zu wissen, dass das funktioniert, und natürlich können wir auf diese Weise auch noch andere Dinge uns anschauen, können zum Beispiel nach den einzelnen Textsorten auch filtern, das mache ich jetzt auch, indem ich nochmal eine neue Pivot-Table hier mache und auch hier nehme ich wieder die Current Selection natürlich und ich will also auf der einen Seite die Variante, die ziehe ich jetzt wieder hier in die Zeilen, dann ziehe ich die das Chore in die Spalten und jetzt will ich wieder den Count der Variante in den Spalten, und wir sehen, dass wir jetzt hier das ganze heruntergebrochen nach den einzelnen Textsorten haben und könnten uns jetzt hier genauer überlegen, woran die Verteilung liegen könnte, ob es wir könnten natürlich auch theoretisch noch ein paar statistische Tests oder so machen, um zu gucken, ob es hier signifikante Unterschiede gibt, all das lassen wir erst mal, sondern zunächst wollte ich zeigen, wie man relativ einfach eben eine solche Tabelle erstellen kann und auf diese Weise eben auch relativ einfach sich Verteilungen in einem Korpus anschauen kann.
 :::
+
+Probieren Sie gerne aus, ob die Verteilung, die ich im Video gefunden habe, sich auch in anderen Korpora wiederfindet (z.B. im Webkorpus) oder ob die Verteilung dort eine andere ist!
+
+
+## Fazit
+
+In diesem Tutorial haben wir Möglichkeiten kennengelernt, mit Hilfe der DWDS-Korpora graphematische Variation zu untersuchen. Dabei konnten wir naürlich nur an der Oberfläche kratzen. Dennoch hoffe ich, ein paar einigermaßen praxisnahe Einblicke in sehr einfache Möglichkeiten der Korpussuche gegeben zu haben. Weiterführende Hinweise finden Sie u.a. in [diesem](https://empirical-linguistics.github.io/ems/) bereits mehrfach erwähnten Tutorial zum empirischen Arbeiten sowie in den dort verlinkten weiterführenden Ressourcen.
+

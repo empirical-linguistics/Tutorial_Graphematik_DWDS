@@ -1,0 +1,43 @@
+Question
+========
+Bei welchen der folgenden DWDS-Korpora handelt es sich nach den obigen Definitionen um Spezialkorpora?
+
+Answerlist
+----------
+* Soldatenbriefe
+* Patiententexte
+* Bergsteigerkorpus (Text+Berg)
+* Berliner Wendekorpus
+* Deutsches Textarchiv
+* Kernkorpus des 20. Jahrhunderts
+* WebXL
+* Gegenwartskorpora mit freiem Zugang
+* Kernkorpus des 21. Jahrhunderts
+* Dortmunder Chatkorpus
+
+
+Solution
+========
+Spezialkorpora sind Korpora, die z.B. gruppenspezifischen oder durch situationale/kontextuelle Faktoren bedingten Sprachgebrauch dokumentieren. 
+
+Answerlist
+----------
+* True
+* True
+* True
+* True
+* False
+* False
+* False
+* False
+* False
+* True
+
+
+
+Meta-information
+================
+exname: Spezialkorpora
+extype: mchoice
+exsolution: 1111000001
+exshuffle: 7

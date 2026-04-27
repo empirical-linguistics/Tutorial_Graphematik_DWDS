@@ -24,6 +24,6 @@ Answerlist
 
 Meta-information
 ================
-exname: Swiss Capital
+exname: Referenzkorpora
 extype: mchoice
 exsolution: 0110
