@@ -1,5 +1,5 @@
 ---
-title: "Eine kleine Korpusstudie zu Zusammen- und Getrenntschreibung"
+title: "Mini-Tutorial: Einfache graphematische Fragestellungen korpusbasiert untersuchen"
 author: "Stefan Hartmann"
 format:
   html:
